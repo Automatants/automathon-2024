@@ -211,25 +211,97 @@ experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", 
 
 # MODELE
 
-class DeepfakeDetector(nn.Module):
-    def __init__(self, nb_frames=10):
-        super().__init__()
-        self.conv1 = nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, stride=1, padding=1)
-        self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1)
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2, padding=0)
-        self.fc1 = nn.Linear(64 * 64 * 64, 128)
-        self.fc2 = nn.Linear(128, 1)
-        self.relu = nn.ReLU()
-        self.sigmoid = nn.Sigmoid()
+import torch.nn.functional as F
+import numpy as np
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class EnhancedCNN4(nn.Module):
+    def __init__(self):
+        in_channels = 3
+        out_channels = 32
+        k_size = 3
+        stride_ = 1
+        padding_ = 1
+        pool_k_size = 2
+        pool_stride = 2
+        pool_padding = 0
+        dropout_rate = 0.5
+
+        
+
+        super(EnhancedCNN4, self).__init__()
+        self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size= k_size, stride=stride_, padding=padding_)
+        self.bn1 = nn.BatchNorm2d(out_channels)
+
+
+        in_channels = out_channels
+        out_channels = out_channels*2
+
+        self.conv2 = nn.Conv2d(in_channels, out_channels, kernel_size= k_size, stride= stride_, padding=padding_)
+        self.bn2 = nn.BatchNorm2d(out_channels)
+
+        self.pool1 = nn.MaxPool2d(kernel_size=pool_k_size, stride=pool_stride)
+
+        in_channels = out_channels
+        out_channels = out_channels*2
+
+        self.conv3 = nn.Conv2d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
+        self.bn3 = nn.BatchNorm2d(out_channels)
+
+        in_channels = out_channels
+        out_channels = out_channels*2
+
+        self.conv4 = nn.Conv2d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
+        self.bn4 = nn.BatchNorm2d(out_channels)
+
+        self.pool2 = nn.MaxPool2d(kernel_size=pool_k_size, stride=pool_stride)
+        
+
+
+
+        # Calculate the size of the output from the last pooling layer
+        def calc_output_dim(input_dim, kernel_size, stride, padding):
+            return (input_dim - kernel_size + 2 * padding) // stride + 1
+        
+        #Initial dimension of the data is 64
+        dim = 64
+        # After conv1
+        dim = calc_output_dim(dim, k_size, stride_, padding_)      
+        # After conv2
+        dim = calc_output_dim(dim, k_size, stride_, padding_)
+        # After pool1
+        dim = calc_output_dim(dim, pool_k_size, pool_stride, pool_padding)   
+        # After conv3
+        dim = calc_output_dim(dim, k_size, stride_, padding_)
+        # After conv4
+        dim = calc_output_dim(dim, k_size, stride_, padding_)
+
+        # After pool2
+        dim = calc_output_dim(dim, pool_k_size, pool_stride, pool_padding)          
+
+        self.dropout = nn.Dropout(dropout_rate)
+    
+        self.fc = nn.Linear(in_features= out_channels*dim*dim, out_features=1024)
+        
+        #out_features is the number of classes we want to predict, here Cat and Dog so 2 classses
+        self.fc2 = nn.Linear(in_features=1024 , out_features=2)
+        
 
     def forward(self, x):
-        x = self.relu(self.conv1(x))
-        x = self.pool(x)
-        x = self.relu(self.conv2(x))
-        x = self.pool(x)
-        x = x.view(-1, 64 * 64 * 64)
-        x = self.relu(self.fc1(x))
-        x = self.sigmoid(self.fc2(x))
+        
+        x = F.relu(self.bn1(self.conv1(x)))
+        x = self.pool1(F.relu(self.bn2(self.conv2(x))))
+        x = F.relu(self.bn3(self.conv3(x)))
+        x = self.pool2(F.relu(self.bn4(self.conv4(x))))
+
+        x = torch.flatten(x, 1)
+        x = self.dropout(x)
+        x = F.relu(self.fc(x))
+        x = (self.fc2(x))
         return x
 
 # LOGGING
