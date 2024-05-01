@@ -266,6 +266,13 @@ class UNet(nn.Module):
         return torch.sigmoid(x)
 
 
+
+# LOGGING
+
+wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
+run = wandb.init(
+    project="authomathon Deep Fake Detection Otho Local",
+)
 # LOGGING
 
 wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
