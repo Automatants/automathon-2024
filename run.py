@@ -249,7 +249,7 @@ batch_size = 32
 loss_fn = nn.MSELoss()
 model = EfficientNet.from_pretrained('efficientnet-b7', num_classes=2).to(device)
 print("Training model:")
-summary(model, input_size=(batch_size, 3, 10, 256, 256))
+summary(model, input_size=(batch_size*3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 epochs = 5
 loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -263,6 +263,7 @@ for epoch in range(epochs):
         X = X.to(device)
         label = label.to(device)
         X = X.reshape(-1, X.shape[2], X.shape[3], X.shape[4])
+        print(X.shape)
         label_pred = model(X)
         label = torch.unsqueeze(label,dim=1)
         loss = loss_fn(label, label_pred)
