@@ -98,6 +98,8 @@ class VideoDataset(Dataset):
         self.dataset_choice = dataset_choice
         if  self.dataset_choice == "test":
             self.root_dir = os.path.join(root_dir, "test_dataset")
+        elif  self.dataset_choice == "train":
+            self.root_dir = os.path.join(root_dir, "train_dataset")
         elif  self.dataset_choice == "experimental":
             self.root_dir = os.path.join(root_dir, "train")
         else:
