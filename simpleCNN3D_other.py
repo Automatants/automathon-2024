@@ -33,7 +33,7 @@ def extract_frames(video_path, nb_frames=10, delta=1, timeit=False):
     video = torch.stack(frames)
     if timeit:
         print(f"read: {t2-t1}")
-    return video[0]
+    return video
 
 def smart_resize(data, size): # kudos louis
     # Prends un tensor de shape [...,C,H,W] et le resize en [...C,size,size]
