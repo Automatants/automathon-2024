@@ -164,6 +164,18 @@ display_image(img)
 
 
 # MODELE
+class UNetBlock(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super(UNetBlock, self).__init__()
+        self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
+        self.conv2 = nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1)
+        self.bn = nn.BatchNorm2d(out_channels)
+
+    def forward(self, x):
+        x = F.relu(self.bn(self.conv1(x)))
+        x = F.relu(self.bn(self.conv2(x)))
+        return x
+     
 class UNet(nn.Module):
     def __init__(self, num_classes):
         super(UNet, self).__init__()
