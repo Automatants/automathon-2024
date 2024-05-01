@@ -287,16 +287,16 @@ class EnhancedCNN4_3D(nn.Module):
         # return x
 
         x = F.relu(self.bn1(self.conv1(x)))
-        print("After conv1:", x.shape)  # Debug output
+        
         x = self.pool1(F.relu(self.bn2(self.conv2(x))))
-        print("After pool1:", x.shape)  # Debug output
+        
         x = F.relu(self.bn3(self.conv3(x)))
-        print("After conv3:", x.shape)  # Debug output
+        
         x = self.pool2(F.relu(self.bn4(self.conv4(x))))
-        print("After pool2:", x.shape)  # Debug output
+        
         
         x = torch.flatten(x, 1)
-        print("Before fc:", x.shape)  # Debug output
+        
         
         x = self.dropout(x)
         x = F.relu(self.fc(x))
