@@ -262,7 +262,7 @@ for epoch in range(epochs):
         X, label, ID = sample
         X = X.to(device)
         label = label.to(device)
-        X = X.squeeze()
+        X = X.reshape(-1, X.shape[2], X.shape[3], X.shape[4])
         label_pred = model(X)
         label = torch.unsqueeze(label,dim=1)
         loss = loss_fn(label, label_pred)
@@ -281,7 +281,7 @@ for sample in tqdm(loader):
     X, ID = sample
     #ID = ID[0]
     X = X.to(device)
-    X = X.squeeze()
+    X = X.reshape(-1, X.shape[2], X.shape[3], X.shape[4])
     label_pred = model(X)
     ids.extend(list(ID))
     pred = (label_pred > 0.5).long()
