@@ -247,7 +247,7 @@ for epoch in range(epochs):
 ## TEST
 
 loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-model = model.to(device)
+#model = model.to(device)
 ids = []
 labels = []
 print("Testing...")
@@ -264,5 +264,5 @@ for sample in tqdm(loader):
 ### ENREGISTREMENT
 print("Saving...")
 tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
-with open("submission.csv", "w") as file:
+with open("submissionUNET_003.csv", "w") as file:
     file.writelines(tests)
