@@ -3,7 +3,6 @@
 import time
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from torchinfo import summary
 import torchvision.io as io
@@ -221,82 +220,50 @@ experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", 
 
 # MODELE
 
-# Définition du modèle UNet avec InceptionV4
-class DoubleConv(nn.Module):
-    def __init__(self, in_channels, out_channels):
-        super(DoubleConv, self).__init__()
-        self.double_conv = nn.Sequential(
-            nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1),
-            nn.BatchNorm2d(out_channels),
-            nn.ReLU(inplace=True),
-            nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1),
-            nn.BatchNorm2d(out_channels),
-            nn.ReLU(inplace=True)
-        )
+class DeepfakeDetector(nn.Module):
+    def __init__(self, nb_frames=10):
+        super().__init__()
+        self.flat = nn.Flatten()
+        self.linear1 = nn.Linear(nb_frames*3*256*256, 128)
+        self.relu1 = nn.ReLU()
+        self.linear2 = nn.Linear(128, 256)
+        self.relu2 = nn.ReLU()
+        self.linear3 = nn.Linear(256, 512)
+        self.relu3 = nn.ReLU()
+        self.linear4 = nn.Linear(512, 1)
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
-        return self.double_conv(x)
-
-class UNet(nn.Module):
-    def __init__(self, num_classes):
-        super(UNet, self).__init__()
-        # Encoder (utilise InceptionV4 pré-entraîné de TIMM)
-        inception = timm.create_model('inception_v4', pretrained=True)
-        self.encoder = inception.features
-        
-        # Decoder
-        self.decoder = nn.ModuleList([
-            DoubleConv(1536, 512),
-            nn.ConvTranspose2d(512, 256, kernel_size=3, stride=2, padding=1, output_padding=1),
-            DoubleConv(256, 256),
-            nn.ConvTranspose2d(256, 128, kernel_size=3, stride=2, padding=1, output_padding=1),
-            DoubleConv(128, 128),
-            nn.ConvTranspose2d(128, 64, kernel_size=3, stride=2, padding=1, output_padding=1),
-            DoubleConv(64, 64),
-            nn.ConvTranspose2d(64, 32, kernel_size=3, stride=2, padding=1, output_padding=1),
-            DoubleConv(32, 32),
-        ])
-        
-        # Classification binaire
-        self.global_pool = nn.AdaptiveAvgPool2d(1)
-        self.fc = nn.Linear(32, num_classes)
-
-    def forward(self, x):
-        # Encoder
-        x = self.encoder(x[:, :, 0])
-        # Decoder
-        for idx, layer in enumerate(self.decoder):
-            x = layer(x)
-        # Classification binaire
-        x = self.global_pool(x)
-        x = torch.flatten(x, 1)
-        x = self.fc(x)
-        return torch.sigmoid(x)
-
-# Créer une instance du modèle
-model = UNet(1)
-summary(model)
+        y = self.flat(x)
+        y = self.linear1(y)
+        y = self.relu1(y)
+        y = self.linear2(y)
+        y = self.relu2(y)
+        y = self.linear3(y)
+        y = self.relu3(y)
+        y = self.linear4(y)
+        y = self.sigmoid(y)
+        return y
 
 
 # LOGGING
 
+wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
 
-wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
 run = wandb.init(
-    project="UNETv4",
+    project="automathon"
 )
-
 
 # ENTRAINEMENT
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batch_size = 32
 loss_fn = nn.MSELoss()
-model = UNet(1).to(device)
+model = DeepfakeDetector().to(device)
 print("Training model:")
 summary(model, input_size=(batch_size, 3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-epochs = 1
+epochs = 5
 loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 #loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
@@ -306,9 +273,7 @@ for epoch in range(epochs):
         optimizer.zero_grad()
         X, label, ID = sample
         X = X.to(device)
-        X = X.permute(0, 2, 1, 3, 4)
         label = label.to(device)
-        label = torch.unsqueeze(label, dim=1)
         label_pred = model(X)
         label = torch.unsqueeze(label,dim=1)
         loss = loss_fn(label, label_pred)
@@ -316,10 +281,6 @@ for epoch in range(epochs):
         optimizer.step()
         run.log({"loss": loss.item(), "epoch": epoch})
 
-torch.save(model.state_dict(), "model.pt")
-del model
-model = UNet(1)
-model.load_state_dict(torch.load("model.pt"))
 ## TEST
 
 loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
@@ -329,11 +290,9 @@ labels = []
 print("Testing...")
 for sample in tqdm(loader):
     X, ID = sample
-    ID = ID[0]
+    #ID = ID[0]
     X = X.to(device)
-    X = X.permute(0, 2, 1, 3, 4)
     label_pred = model(X)
-    label_pred = torch.unsqueeze(label_pred, dim=1)
     ids.extend(list(ID))
     pred = (label_pred > 0.5).long()
     pred = pred.cpu().detach().numpy().tolist()
@@ -342,5 +301,5 @@ for sample in tqdm(loader):
 ### ENREGISTREMENT
 print("Saving...")
 tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
-with open("submissionUNETv4.csv", "w") as file:
+with open("submission.csv", "w") as file:
     file.writelines(tests)
