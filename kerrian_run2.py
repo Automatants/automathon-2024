@@ -149,7 +149,7 @@ class VideoDataset(Dataset):
 
 
 #train_dataset = VideoDataset(dataset_dir, dataset_choice="train", nb_frames=nb_frames)
-#test_dataset = VideoDataset(dataset_dir, dataset_choice="test", nb_frames=nb_frames)
+test_dataset = VideoDataset(dataset_dir, dataset_choice="test", nb_frames=nb_frames)
 experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", nb_frames=nb_frames)
 
 video, label, ID = experimental_dataset[10]
@@ -235,21 +235,26 @@ for epoch in range(epochs):
     # Logging loss and accuracy
     run.log({"loss": epoch_loss, "accuracy": accuracy, "epoch": epoch})
 
-# Plot loss and accuracy
-plt.figure(figsize=(10, 5))
-plt.subplot(1, 2, 1)
-plt.plot(losses, label='Training Loss')
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.title('Training Loss')
-plt.legend()
 
-plt.subplot(1, 2, 2)
-plt.plot(accuracies, label='Training Accuracy')
-plt.xlabel('Epoch')
-plt.ylabel('Accuracy')
-plt.title('Training Accuracy')
-plt.legend()
+## TEST
 
-plt.tight_layout()
-plt.show()
+loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+model = model.to(device)
+ids = []
+labels = []
+print("Testing...")
+for sample in tqdm(loader):
+    X, ID = sample
+    #ID = ID[0]
+    X = X.to(device)
+    label_pred = model(X)
+    ids.extend(list(ID))
+    pred = (label_pred > 0.5).long()
+    pred = pred.cpu().detach().numpy().tolist()
+    labels.extend(pred)
+
+### ENREGISTREMENT
+print("Saving...")
+tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
+with open("submission.csv", "w") as file:
+    file.writelines(tests)
