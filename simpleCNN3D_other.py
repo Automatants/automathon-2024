@@ -228,7 +228,7 @@ class EnhancedCNN4_3D(nn.Module):
     def __init__(self):
         super(EnhancedCNN4_3D, self).__init__()
         in_channels = 3
-        out_channels = 32
+        out_channels = 16
         k_size = (3, 3, 3)  # Kernel size now includes time dimension
         stride_ = (1, 1, 1)  # Stride now includes time dimension
         padding_ = (1, 1, 1)  # Padding now includes time dimension
