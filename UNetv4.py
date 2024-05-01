@@ -296,7 +296,7 @@ model = UNet(1).to(device)
 print("Training model:")
 summary(model, input_size=(batch_size, 3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-epochs = 5
+epochs = 1
 loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 #loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
@@ -336,5 +336,5 @@ for sample in tqdm(loader):
 ### ENREGISTREMENT
 print("Saving...")
 tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
-with open("submission.csv", "w") as file:
+with open("submissionUNETv4.csv", "w") as file:
     file.writelines(tests)
