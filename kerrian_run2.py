@@ -246,6 +246,14 @@ class DeepfakeDetector(nn.Module):
 model = DeepfakeDetector()
 summary(model)
 
+
+# LOGGING
+
+wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
+run = wandb.init(
+    project="authomathon Deep Fake Detection Otho Local",
+)
+
 loss_fn = nn.MSELoss()
 model = DeepfakeDetector()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -308,5 +316,5 @@ for sample in tqdm(loader):
 ### ENREGISTREMENT
 print("Saving...")
 tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
-with open("submission.csv", "w") as file:
+with open("submission_kerrian2.csv", "w") as file:
     file.writelines(tests)
