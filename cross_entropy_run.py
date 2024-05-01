@@ -299,33 +299,56 @@ run = wandb.init(
     project="authomathon Deep Fake Detection Otho Local",
 )
 # ENTRAINEMENT
+import torch
+from torch.utils.data import DataLoader
+from tqdm import tqdm
+import torch.nn as nn
+import torch.optim as optim
 
+# Assuming 'EnhancedCNN4_3D' is already defined and includes a final output layer suitable for classification
+
+# Set the device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(device)
 
+# Loss function
 loss_fn = nn.CrossEntropyLoss()
+
+# Model instantiation and moving to the appropriate device
 model = EnhancedCNN4_3D().to(device)
-#model = DeepfakeDetector().cuda()
+
+# Optimizer
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-#epochs = 5
+
+# Number of epochs
 epochs = 1
+
+# DataLoader instantiation
 loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
+# Training loop
 for epoch in range(epochs):
     for sample in tqdm(loader, desc="Epoch {}".format(epoch), ncols=0):
         optimizer.zero_grad()
+
+        # Unpack the data and move inputs and labels to the correct device
         X, label, ID = sample
         X = X.permute(0, 2, 1, 3, 4).to(device)  # Adjusting dimension order and moving to device
-        X = X.to(device)
-        label = label.to(device)
-        #X = X.cuda()
-        #label = label.cuda()
+        label = label.to(device).long()  # Ensure label is of type torch.long
+
+        # Forward pass
         label_pred = model(X)
-        label=torch.unsqueeze(label,dim=1)
-        loss = loss_fn(label, label_pred)
+
+        # Compute loss
+        loss = loss_fn(label_pred, label)
+
+        # Backward pass
         loss.backward()
+
+        # Optimizer step
         optimizer.step()
+
         run.log({"loss": loss.item(), "epoch": epoch})
+
 
 ## TEST
 
