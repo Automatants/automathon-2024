@@ -256,8 +256,9 @@ run = wandb.init(
 
 loss_fn = nn.MSELoss()
 model = DeepfakeDetector()
+model = model.to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-epochs = 10
+epochs = 1
 loader = DataLoader(experimental_dataset, batch_size=32, shuffle=True)
 losses = []
 accuracies = []
@@ -299,7 +300,6 @@ for epoch in range(epochs):
 ## TEST
 
 loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
-model = model.to(device)
 ids = []
 labels = []
 print("Testing...")
