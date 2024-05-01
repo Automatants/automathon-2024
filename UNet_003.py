@@ -162,18 +162,22 @@ img=smart_resize(img, 256)
 print(img.shape)
 display_image(img)
 
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import timm
 
-# MODELE
 class UNetBlock(nn.Module):
     def __init__(self, in_channels, out_channels):
         super(UNetBlock, self).__init__()
         self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
         self.conv2 = nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1)
-        self.bn = nn.BatchNorm2d(out_channels)
+        self.bn1 = nn.BatchNorm2d(out_channels)  # BatchNorm for the first convolution
+        self.bn2 = nn.BatchNorm2d(out_channels)  # BatchNorm for the second convolution
 
     def forward(self, x):
-        x = F.relu(self.bn(self.conv1(x)))
-        x = F.relu(self.bn(self.conv2(x)))
+        x = F.relu(self.bn1(self.conv1(x)))
+        x = F.relu(self.bn2(self.conv2(x)))
         return x
      
 class UNet(nn.Module):
@@ -183,7 +187,7 @@ class UNet(nn.Module):
         resnet = timm.create_model('resnet50', pretrained=True)
         self.encoder = nn.Sequential(*list(resnet.children())[:-2])
         # Adjusting the first convolutional layer to accept 10 input channels
-        self.encoder[0] = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.encoder[0] = nn.Conv2d(10, 64, kernel_size=7, stride=2, padding=3, bias=False)
 
         # Decoder
         self.decoder = nn.Sequential(
@@ -202,7 +206,7 @@ class UNet(nn.Module):
 
     def forward(self, x):
         # Make sure to pass the whole tensor to the encoder
-        x = self.encoder(x)  # Removed incorrect indexing
+        x = self.encoder(x)
         x = self.decoder(x)
         x = self.global_pool(x)
         x = torch.flatten(x, 1)
