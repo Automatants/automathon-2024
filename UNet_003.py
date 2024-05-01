@@ -244,10 +244,10 @@ for epoch in range(epochs):
         # Handle each frame independently and average the predictions
         predictions = []
         for frame in range(X.shape[2]):  # Process each frame
-            frame_input = X[:, frame, :, :, :]  # Select the frame, now shape is [batch_size, channels, height, width]
+            frame_input = X[:, :, frame, :, :]  # Select the frame, now shape is [batch_size, channels, height, width]
             # Make sure that the channels are correctly set to 10 if needed
             if frame_input.shape[1] != 10:
-                raise ValueError(f"Expected 10 channels, but got {frame_input.shape[1]} channels.")
+                frame_input = torch.cat([frame_input, torch.zeros(frame_input.size(0), 10 - frame_input.size(1), frame_input.size(2), frame_input.size(3)).to(frame_input.device)], dim=1)
             frame_pred = model(frame_input)
             predictions.append(frame_pred.unsqueeze(1))  # Unsqueeze to keep batch dimension consistent
         
@@ -260,6 +260,7 @@ for epoch in range(epochs):
         loss.backward()
         optimizer.step()
         run.log({"loss": loss.item(), "epoch": epoch})
+
 
 
 ## TEST
