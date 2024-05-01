@@ -259,8 +259,8 @@ class EnhancedCNN4_3D(nn.Module):
             dim = (dim - pool_k_size[2] + 2 * pool_padding[2]) // pool_stride[2] + 1
 
         self.dropout = nn.Dropout(dropout_rate)
-        self.fc = nn.Linear(10485760, 1024)  # Adjusting for 3D volume
-        self.fc2 = nn.Linear(1024, 1)  # Number of classes
+        self.fc = nn.Linear(10485760, 10485760//2)  # Adjusting for 3D volume
+        self.fc2 = nn.Linear(10485760//2, 1)  # Number of classes
 
     def forward(self, x):
         
