@@ -101,7 +101,7 @@ class VideoDataset(Dataset):
         elif  self.dataset_choice == "train":
             self.root_dir = os.path.join(root_dir, "train_dataset")
         elif  self.dataset_choice == "experimental":
-            self.root_dir = os.path.join(root_dir, "train")
+            self.root_dir = os.path.join(root_dir, "experimental_dataset")
         else:
             raise ValueError("choice must be 'test' or 'experimental'")
  
