@@ -325,7 +325,7 @@ labels = []
 print("Testing...")
 for sample in tqdm(loader):
     X, ID = sample
-    #ID = ID[0]
+    ID = ID[0]
     X = X.to(device)
     X = X.permute(0, 2, 1, 3, 4)
     label_pred = model(X)
