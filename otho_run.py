@@ -171,7 +171,7 @@ class VideoDataset(Dataset):
         # Read dataset.csv for mapping video files to labels
         with open(os.path.join(root_dir, "dataset.csv"), 'r') as file:
             reader = csv.reader(file)
-            self.ids = {row[1]: row[0] for row in reader}  # Assuming row[1] has the filename and row[0] the ID
+            self.ids = {row[1].replace('.mp4', '.pt'): row[0] for row in reader}
 
         # If not a test dataset, read labels from metadata.json
         if dataset_choice != "test":
