@@ -13,6 +13,7 @@ from tqdm import tqdm
 import csv
 import timm
 import wandb
+from efficientnet_pytorch import EfficientNet
 
 from PIL import Image
 import torchvision.transforms.v2 as transforms
@@ -25,8 +26,8 @@ def extract_frames(video_path, nb_frames=10, delta=1, timeit=False):
     reader = io.VideoReader(video_path)
     # take 10 frames uniformly sampled from the video
     frames = []
+    reader.seek(delta)
     for i in range(nb_frames):
-        reader.seek(delta)
         frame = next(reader)
         frames.append(frame['data'])
     t2 = time.time()     
@@ -201,8 +202,8 @@ class VideoDataset(Dataset):
         video = video[[i*(length//(nb_frames)) for i in range(nb_frames)]]
         """
         # resize the data into a reglar shape of 256x256 and normalize it
-        #video = smart_resize(video, 256) / 255
-        video = video / 255
+        video = smart_resize(video, 256) / 255
+        #video = video / 255
 
         ID = self.ids[self.video_files[idx]]
         if self.dataset_choice == "test":
@@ -246,7 +247,7 @@ run = wandb.init(
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batch_size = 32
 loss_fn = nn.MSELoss()
-model = DeepfakeDetector().to(device)
+model = EfficientNet.from_pretrained('efficientnet-b7', num_classes=2).to(device)
 print("Training model:")
 summary(model, input_size=(batch_size, 3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -261,6 +262,7 @@ for epoch in range(epochs):
         X, label, ID = sample
         X = X.to(device)
         label = label.to(device)
+        X = X.reshape(-1, X.shape[2], X.shape[3], X.shape[4])
         label_pred = model(X)
         label = torch.unsqueeze(label,dim=1)
         loss = loss_fn(label, label_pred)
@@ -279,6 +281,7 @@ for sample in tqdm(loader):
     X, ID = sample
     #ID = ID[0]
     X = X.to(device)
+    X = X.reshape(-1, X.shape[2], X.shape[3], X.shape[4])
     label_pred = model(X)
     ids.extend(list(ID))
     pred = (label_pred > 0.5).long()
