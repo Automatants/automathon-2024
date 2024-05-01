@@ -248,11 +248,13 @@ class DeepfakeDetector(nn.Module):
 
 # LOGGING
 
-wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
 
+
+wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
 run = wandb.init(
-    project="automathon"
+    project="linear",
 )
+
 
 # ENTRAINEMENT
 
@@ -301,5 +303,5 @@ for sample in tqdm(loader):
 ### ENREGISTREMENT
 print("Saving...")
 tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
-with open("submission.csv", "w") as file:
+with open("submissionlinear.csv", "w") as file:
     file.writelines(tests)
