@@ -296,6 +296,8 @@ for epoch in range(epochs):
     # Logging loss and accuracy
     run.log({"loss": epoch_loss, "accuracy": accuracy, "epoch": epoch})
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(device)
 
 ## TEST
 
