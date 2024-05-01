@@ -328,10 +328,10 @@ for epoch in range(epochs):
         optimizer.zero_grad()
         X, label, ID = sample
         X = X.permute(0, 2, 1, 3, 4).to(device)  # Adjusting dimension order and moving to device
-        #X = X.to(device)
-        #label = label.to(device)
-        X = X.cuda()
-        label = label.cuda()
+        X = X.to(device)
+        label = label.to(device)
+        #X = X.cuda()
+        #label = label.cuda()
         label_pred = model(X)
         label=torch.unsqueeze(label,dim=1)
         loss = loss_fn(label, label_pred)
