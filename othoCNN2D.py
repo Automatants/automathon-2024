@@ -169,9 +169,14 @@ class VideoDataset(Dataset):
 
 
 
-train_dataset = VideoDataset(dataset_dir, dataset_choice="train", nb_frames=nb_frames)
-test_dataset = VideoDataset(dataset_dir, dataset_choice="test", nb_frames=nb_frames)
-experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", nb_frames=nb_frames)
+#train_dataset = VideoDataset(dataset_dir, dataset_choice="train", nb_frames=nb_frames)
+train_dataset = VideoDataset(dataset_dir, dataset_choice="train")
+
+#test_dataset = VideoDataset(dataset_dir, dataset_choice="test", nb_frames=nb_frames)
+test_dataset = VideoDataset(dataset_dir, dataset_choice="test")
+
+#experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", nb_frames=nb_frames)
+experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental")
 
 
 # MODELE
