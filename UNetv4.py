@@ -316,6 +316,8 @@ for epoch in range(epochs):
         optimizer.step()
         run.log({"loss": loss.item(), "epoch": epoch})
 
+trained_unet = torch.save()
+torch.load()
 ## TEST
 
 loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
