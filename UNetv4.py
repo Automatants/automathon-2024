@@ -182,7 +182,7 @@ class VideoDataset(Dataset):
         else:
             with open(os.path.join(self.root_dir, "metadata.json"), 'r') as file:
                 self.data= json.load(file)
-                self.data = {k[:-3] + "pt" : (torch.tensor(float(1)) if v == 'FAKE' else torch.tensor(float(0))) for k, v in self.data.items()}
+                self.data = {k[:-3] + "pt" : (torch.tensor(float(1)) if v == 'fake' else torch.tensor(float(0))) for k, v in self.data.items()}
 
         #self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.mp4')]
         self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.pt')]
@@ -242,6 +242,8 @@ class UNet(nn.Module):
         super(UNet, self).__init__()
         # Encoder (utilise InceptionV4 pré-entraîné de TIMM)
         inception = timm.create_model('inception_v4', pretrained=True)
+        for p in inception.features.parameters():
+            p.requires_grad = False
         self.encoder = inception.features
         
         # Decoder
@@ -272,10 +274,6 @@ class UNet(nn.Module):
         x = torch.flatten(x, 1)
         x = self.fc(x)
         return torch.sigmoid(x)
-
-# Créer une instance du modèle
-model = UNet(1)
-summary(model)
 
 
 # LOGGING
@@ -318,12 +316,11 @@ for epoch in range(epochs):
 
 torch.save(model.state_dict(), "model.pt")
 del model
-model = UNet(1)
+model = UNet(1).to(device)
 model.load_state_dict(torch.load("model.pt"))
 ## TEST
 
 loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
-model = model.to(device)
 ids = []
 labels = []
 print("Testing...")
