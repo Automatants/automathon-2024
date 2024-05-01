@@ -253,6 +253,7 @@ wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
 run = wandb.init(
     project="authomathon Deep Fake Detection Otho Local",
 )
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 loss_fn = nn.MSELoss()
 model = DeepfakeDetector()
