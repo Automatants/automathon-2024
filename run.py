@@ -288,6 +288,7 @@ class EnhancedCNN4_3D(nn.Module):
         x = self.dropout(x)
         x = F.relu(self.fc(x))
         x = self.fc2(x)
+        x = F.softmax(x, dim=1)
         return x
 
 
