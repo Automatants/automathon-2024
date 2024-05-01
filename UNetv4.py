@@ -280,11 +280,12 @@ summary(model)
 
 # LOGGING
 
-wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
 
+wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
 run = wandb.init(
-    project="automathon"
+    project="UNETv4",
 )
+
 
 # ENTRAINEMENT
 
@@ -295,7 +296,7 @@ model = UNet(1).to(device)
 print("Training model:")
 summary(model, input_size=(batch_size, 3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-epochs = 5
+epochs = 1
 loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 #loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
@@ -335,5 +336,5 @@ for sample in tqdm(loader):
 ### ENREGISTREMENT
 print("Saving...")
 tests = ["id,label\n"] + [f"{ID},{label_pred[0]}\n" for ID, label_pred in zip(ids, labels)]
-with open("submission.csv", "w") as file:
+with open("submissionUNETv4.csv", "w") as file:
     file.writelines(tests)
