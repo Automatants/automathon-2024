@@ -183,7 +183,7 @@ class UNet(nn.Module):
         resnet = timm.create_model('resnet50', pretrained=True)
         self.encoder = nn.Sequential(*list(resnet.children())[:-2])
         # Adjusting the first convolutional layer to accept 10 input channels
-        self.encoder[0] = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.encoder[0] = nn.Conv2d(10, 64, kernel_size=7, stride=2, padding=3, bias=False)
 
         # Decoder
         self.decoder = nn.Sequential(
@@ -241,6 +241,9 @@ for epoch in range(epochs):
         predictions = []
         for frame in range(X.shape[2]):  # Process each frame
             frame_input = X[:, frame, :, :, :]  # Select the frame, now shape is [batch_size, channels, height, width]
+            # Make sure that the channels are correctly set to 10 if needed
+            if frame_input.shape[1] != 10:
+                raise ValueError(f"Expected 10 channels, but got {frame_input.shape[1]} channels.")
             frame_pred = model(frame_input)
             predictions.append(frame_pred.unsqueeze(1))  # Unsqueeze to keep batch dimension consistent
         
