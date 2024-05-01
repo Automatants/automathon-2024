@@ -158,7 +158,6 @@ class VideoDataset(Dataset):
     This Dataset takes a video and returns a tensor of shape [10, 3, 256, 256]
     That is 10 colored frames of 256x256 pixels.
     """
-    
 class VideoDataset(Dataset):
     """
     This Dataset takes a video and returns a tensor of shape [3, 256, 256].
@@ -189,14 +188,17 @@ class VideoDataset(Dataset):
         video_path = os.path.join(self.root_dir, self.video_files[idx])
         video = torch.load(video_path)  # Assuming video tensor shape [frames, channels, height, width]
 
+        # Convert the video tensor to floating point type before averaging
+        video = video.float()  # Convert to float to compute mean properly
+
+        # Average the frames along the frame dimension (axis=0)
+        video = video.mean(dim=0)
+
         # Resize frames and normalize
         transform = transforms.Compose([
             transforms.Resize((256, 256)),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
-
-        # Average the frames along the frame dimension (axis=0)
-        video = video.mean(dim=0)
         video = transform(video)  # Apply resizing and normalization
 
         # Prepare label and ID
