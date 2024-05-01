@@ -220,120 +220,49 @@ experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", 
 
 # MODELE
 
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-class EnhancedCNN4_3D(nn.Module):
-    def __init__(self):
-        super(EnhancedCNN4_3D, self).__init__()
-        in_channels = 3
-        out_channels = 32
-        k_size = (3, 3, 3)  # Kernel size now includes time dimension
-        stride_ = (1, 1, 1)  # Stride now includes time dimension
-        padding_ = (1, 1, 1)  # Padding now includes time dimension
-        pool_k_size = (1, 2, 2)  # Pooling in the time dimension remains 1
-        pool_stride = (1, 2, 2)  # Pooling stride in the time dimension
-        pool_padding = (0, 0, 0)  # Pool padding
-        dropout_rate = 0.5
-
-        # Convolutional and BatchNorm layers now use 3D
-        self.conv1 = nn.Conv3d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
-        self.bn1 = nn.BatchNorm3d(out_channels)
-
-        in_channels = out_channels
-        out_channels *= 2  # Doubling the output channels with each layer
-
-        self.conv2 = nn.Conv3d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
-        self.bn2 = nn.BatchNorm3d(out_channels)
-        self.pool1 = nn.MaxPool3d(kernel_size=pool_k_size, stride=pool_stride, padding=pool_padding)
-
-        in_channels = out_channels
-        out_channels *= 2
-
-        self.conv3 = nn.Conv3d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
-        self.bn3 = nn.BatchNorm3d(out_channels)
-
-        in_channels = out_channels
-        out_channels *= 2
-
-        self.conv4 = nn.Conv3d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
-        self.bn4 = nn.BatchNorm3d(out_channels)
-        self.pool2 = nn.MaxPool3d(kernel_size=pool_k_size, stride=pool_stride)
-
-        # Assuming input depth is 10 frames and each frame is 256x256 pixels
-        # This would need to be adjusted based on actual input size
-        input_frames = 10
-        dim = 256  # Initial dimension of the data in height and width
-        for _ in range(2):  # Two pooling layers
-            input_frames = (input_frames - pool_k_size[0] + 2 * pool_padding[0]) // pool_stride[0] + 1
-            dim = (dim - pool_k_size[1] + 2 * pool_padding[1]) // pool_stride[1] + 1
-            dim = (dim - pool_k_size[2] + 2 * pool_padding[2]) // pool_stride[2] + 1
-
-        self.dropout = nn.Dropout(dropout_rate)
-        self.fc = nn.Linear(10485760, 1024)  # Adjusting for 3D volume
-        self.fc2 = nn.Linear(1024, 2)  # Number of classes
+class DeepfakeDetector(nn.Module):
+    def __init__(self, nb_frames=10):
+        super().__init__()
+        self.dense = nn.Linear(nb_frames*3*256*256,1)
+        self.flat = nn.Flatten()
+        self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
-        # x = F.relu(self.bn1(self.conv1(x)))
-        # x = self.pool1(F.relu(self.bn2(self.conv2(x))))
-        # x = F.relu(self.bn3(self.conv3(x)))
-        # x = self.pool2(F.relu(self.bn4(self.conv4(x))))
-        
-        # x = torch.flatten(x, 1)
-        # x = self.dropout(x)
-        # x = F.relu(self.fc(x))
-        # x = self.fc2(x)
-        # return x
-
-        x = F.relu(self.bn1(self.conv1(x)))
-        print("After conv1:", x.shape)  # Debug output
-        x = self.pool1(F.relu(self.bn2(self.conv2(x))))
-        print("After pool1:", x.shape)  # Debug output
-        x = F.relu(self.bn3(self.conv3(x)))
-        print("After conv3:", x.shape)  # Debug output
-        x = self.pool2(F.relu(self.bn4(self.conv4(x))))
-        print("After pool2:", x.shape)  # Debug output
-        
-        x = torch.flatten(x, 1)
-        print("Before fc:", x.shape)  # Debug output
-        
-        x = self.dropout(x)
-        x = F.relu(self.fc(x))
-        x = self.fc2(x)
-        return x
-
+        y = self.flat(x)
+        y = self.dense(y)
+        y = self.sigmoid(y)
+        return y
 
 # LOGGING
 
-wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
+wandb.login(key="a446d513570a79c857317c3000584c5f6d6224f0")
+
 run = wandb.init(
-    project="authomathon Deep Fake Detection Otho Local",
+    project="automathon"
 )
+
 # ENTRAINEMENT
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(device)
-
+batch_size = 32
 loss_fn = nn.MSELoss()
-model = EnhancedCNN4_3D().to(device)
-#model = DeepfakeDetector().cuda()
+model = DeepfakeDetector().to(device)
+print("Training model:")
+summary(model, input_size=(batch_size, 3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-#epochs = 5
 epochs = 5
-loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
+loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+#loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
+print("Training...")
 for epoch in range(epochs):
-    for sample in tqdm(loader, desc="Epoch {}".format(epoch), ncols=0):
+    for sample in tqdm(loader):
         optimizer.zero_grad()
         X, label, ID = sample
-        X = X.permute(0, 2, 1, 3, 4).to(device)  # Adjusting dimension order and moving to device
         X = X.to(device)
         label = label.to(device)
-        #X = X.cuda()
-        #label = label.cuda()
         label_pred = model(X)
-        label=torch.unsqueeze(label,dim=1)
+        label = torch.unsqueeze(label,dim=1)
         loss = loss_fn(label, label_pred)
         loss.backward()
         optimizer.step()
