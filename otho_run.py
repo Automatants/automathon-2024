@@ -158,32 +158,28 @@ class VideoDataset(Dataset):
     This Dataset takes a video and returns a tensor of shape [10, 3, 256, 256]
     That is 10 colored frames of 256x256 pixels.
     """
+    
+class VideoDataset(Dataset):
+    """
+    This Dataset takes a video and returns a tensor of shape [3, 256, 256].
+    That is a single averaged color frame of 256x256 pixels.
+    """
     def __init__(self, root_dir, dataset_choice="train", nb_frames=10):
         super().__init__()
-        self.dataset_choice = dataset_choice
-        if  self.dataset_choice == "train":
-            self.root_dir = os.path.join(root_dir, "train_dataset")
-        elif  self.dataset_choice == "test":
-            self.root_dir = os.path.join(root_dir, "test_dataset")
-        elif  self.dataset_choice == "experimental":
-            self.root_dir = os.path.join(root_dir, "experimental_dataset")
-        else:
-            raise ValueError("choice must be 'train', 'test' or 'experimental'")
+        self.root_dir = os.path.join(root_dir, f"{dataset_choice}_dataset")
+        self.nb_frames = nb_frames
 
+        # Read dataset.csv for mapping video files to labels
         with open(os.path.join(root_dir, "dataset.csv"), 'r') as file:
             reader = csv.reader(file)
-            # read dataset.csv with id,label columns to create
-            # a dict which associated label: id
-            self.ids = {row[1][:-3] + "pt" : row[0] for row in reader}
+            self.ids = {row[1]: row[0] for row in reader}  # Assuming row[1] has the filename and row[0] the ID
 
-        if self.dataset_choice == "test":
-            self.data = None
-        else:
+        # If not a test dataset, read labels from metadata.json
+        if dataset_choice != "test":
             with open(os.path.join(self.root_dir, "metadata.json"), 'r') as file:
-                self.data= json.load(file)
-                self.data = {k[:-3] + "pt" : (torch.tensor(float(1)) if v == 'fake' else torch.tensor(float(0))) for k, v in self.data.items()}
+                self.data = json.load(file)
 
-        #self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.mp4')]
+        # List video files
         self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.pt')]
 
     def __len__(self):
@@ -191,26 +187,25 @@ class VideoDataset(Dataset):
 
     def __getitem__(self, idx):
         video_path = os.path.join(self.root_dir, self.video_files[idx])
-        #video, audio, info = io.read_video(video_path, pts_unit='sec')
-        #video = extract_frames(video_path)
-        video = torch.load(video_path)
+        video = torch.load(video_path)  # Assuming video tensor shape [frames, channels, height, width]
 
-        """
-        video = video.permute(0,3,1,2)
-        length = video.shape[0]
-        video = video[[i*(length//(nb_frames)) for i in range(nb_frames)]]
-        """
-        # resize the data into a reglar shape of 256x256 and normalize it
-        #video = smart_resize(video, 256) / 255
-        video = video / 255
+        # Resize frames and normalize
+        transform = transforms.Compose([
+            transforms.Resize((256, 256)),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
 
+        # Average the frames along the frame dimension (axis=0)
+        video = video.mean(dim=0)
+        video = transform(video)  # Apply resizing and normalization
+
+        # Prepare label and ID
         ID = self.ids[self.video_files[idx]]
         if self.dataset_choice == "test":
             return video, ID
         else:
-            label = self.data[self.video_files[idx]]
+            label = torch.tensor(float(1)) if self.data[self.video_files[idx]] == 'fake' else torch.tensor(float(0))
             return video, label, ID
-
 
 
 train_dataset = VideoDataset(dataset_dir, dataset_choice="train", nb_frames=nb_frames)
