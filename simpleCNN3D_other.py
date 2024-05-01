@@ -33,7 +33,7 @@ def extract_frames(video_path, nb_frames=10, delta=1, timeit=False):
     video = torch.stack(frames)
     if timeit:
         print(f"read: {t2-t1}")
-    return video[0]
+    return video
 
 def smart_resize(data, size): # kudos louis
     # Prends un tensor de shape [...,C,H,W] et le resize en [...C,size,size]
@@ -259,8 +259,8 @@ class EnhancedCNN4_3D(nn.Module):
             dim = (dim - pool_k_size[2] + 2 * pool_padding[2]) // pool_stride[2] + 1
 
         self.dropout = nn.Dropout(dropout_rate)
-        self.fc = nn.Linear(10485760, 1024)  # Adjusting for 3D volume
-        self.fc2 = nn.Linear(1024, 1)  # Number of classes
+        self.fc = nn.Linear(10485760, 10485760//2)  # Adjusting for 3D volume
+        self.fc2 = nn.Linear(10485760//2, 1)  # Number of classes
 
     def forward(self, x):
         
