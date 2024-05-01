@@ -327,7 +327,9 @@ for sample in tqdm(loader):
     X, ID = sample
     #ID = ID[0]
     X = X.to(device)
+    X = X.permute(0, 2, 1, 3, 4)
     label_pred = model(X)
+    label_pred = torch.unsqueeze(label_pred, dim=1)
     ids.extend(list(ID))
     pred = (label_pred > 0.5).long()
     pred = pred.cpu().detach().numpy().tolist()
