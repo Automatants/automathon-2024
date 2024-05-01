@@ -85,8 +85,8 @@ def resize_data(data, new_height, new_width, x=0, y=0, height=None, width=None):
     x = data[...,y:min(y+height, full_height), x:min(x+width, full_width)].clone()
     return tr(x)
 
-dataset_dir = "./dataset"
-root_dir = os.path.expanduser("./dataset/train")
+dataset_dir = "/raid/datasets/hackathon2024"
+root_dir = os.path.expanduser("~/automathon-2024")
 
 nb_frames = 10
 
