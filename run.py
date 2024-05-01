@@ -270,7 +270,7 @@ class EnhancedCNN4_3D(nn.Module):
 
         self.dropout = nn.Dropout(dropout_rate)
         self.fc = nn.Linear(5242880, 1024)  # Adjusting for 3D volume
-        self.fc2 = nn.Linear(1024, 2)  # Number of classes
+        self.fc2 = nn.Linear(1024, 1)  # Number of classes
 
     def forward(self, x):
         
