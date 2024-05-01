@@ -183,7 +183,9 @@ class UNet(nn.Module):
         # Encoder (utilise ResNet50 pré-entraîné)
         resnet = timm.create_model('resnet50', pretrained=True)
         self.encoder = nn.Sequential(*list(resnet.children())[:-2])
-        
+         # Adjusting the first convolutional layer to take 10 input channels
+        self.encoder[0] = nn.Conv2d(10, 64, kernel_size=7, stride=2, padding=3, bias=False)
+
         # Decoder
         self.decoder = nn.Sequential(
             UNetBlock(2048, 1024),
