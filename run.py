@@ -181,7 +181,7 @@ class VideoDataset(Dataset):
         else:
             with open(os.path.join(self.root_dir, "metadata.json"), 'r') as file:
                 self.data= json.load(file)
-                self.data = {k[:-3] + "pt" : (torch.tensor(float(1)) if v == 'FAKE' else torch.tensor(float(0))) for k, v in self.data.items()}
+                self.data = {k[:-3] + "pt" : (torch.tensor(float(1)) if v == 'fake' else torch.tensor(float(0))) for k, v in self.data.items()}
 
         #self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.mp4')]
         self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.pt')]
