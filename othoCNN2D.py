@@ -19,21 +19,10 @@ import torchvision.transforms.v2 as transforms
 
 # UTILITIES
 
-def extract_frames(video_path, nb_frames=10, delta=1, timeit=False):
-    # use time to measure the time it takes to resize a video
-    t1 = time.time()
-    reader = io.VideoReader(video_path)
-    # take 10 frames uniformly sampled from the video
-    frames = []
-    for i in range(nb_frames):
-        reader.seek(delta)
-        frame = next(reader)
-        frames.append(frame['data'])
-    t2 = time.time()     
-    video = torch.stack(frames)
-    if timeit:
-        print(f"read: {t2-t1}")
-    return video[0]
+def extract_first_frame(video_path):
+    reader = io.VideoReader(video_path, "video")
+    frame = next(reader)['data']  # Read the first frame
+    return frame.unsqueeze(0)  # Add a batch dimension
 
 def smart_resize(data, size): # kudos louis
     # Prends un tensor de shape [...,C,H,W] et le resize en [...C,size,size]
@@ -153,61 +142,31 @@ if use_small_dataset:
 
 nb_frames = 10
 
+
+# Modified VideoDataset Class
 class VideoDataset(Dataset):
-    """
-    This Dataset takes a video and returns a tensor of shape [10, 3, 256, 256]
-    That is 10 colored frames of 256x256 pixels.
-    """
-class VideoDataset(Dataset):
-    """
-    This Dataset takes a video and returns a tensor of shape [3, 256, 256].
-    That is a single averaged color frame of 256x256 pixels.
-    """
-    def __init__(self, root_dir, dataset_choice="train", nb_frames=10):
-        super().__init__()
+    def __init__(self, root_dir, dataset_choice="train"):
         self.root_dir = os.path.join(root_dir, f"{dataset_choice}_dataset")
-        self.nb_frames = nb_frames
+        with open(os.path.join(self.root_dir, "metadata.json"), 'r') as file:
+            self.data = json.load(file)
+        
+        self.transform = transforms.Compose([
+            transforms.Resize((256, 256)),  # Resize each frame to 256x256
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        ])
 
-        # Read dataset.csv for mapping video files to labels
-        with open(os.path.join(root_dir, "dataset.csv"), 'r') as file:
-            reader = csv.reader(file)
-            self.ids = {row[1].replace('.mp4', '.pt'): row[0] for row in reader}
-
-        # If not a test dataset, read labels from metadata.json
-        if dataset_choice != "test":
-            with open(os.path.join(self.root_dir, "metadata.json"), 'r') as file:
-                self.data = json.load(file)
-
-        # List video files
-        self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.pt')]
+        self.video_files = [f for f in os.listdir(self.root_dir) if f.endswith('.mp4')]
 
     def __len__(self):
         return len(self.video_files)
 
     def __getitem__(self, idx):
         video_path = os.path.join(self.root_dir, self.video_files[idx])
-        video = torch.load(video_path)  # Assuming video tensor shape [frames, channels, height, width]
+        frame = extract_first_frame(video_path)
+        frame = self.transform(frame)  # Apply transformations
+        label = torch.tensor(float(self.data[self.video_files[idx]] == 'fake'))
+        return frame.squeeze(0), label  # Remove batch dimension and return frame and label
 
-        # Convert the video tensor to floating point type before averaging
-        video = video.float()  # Convert to float to compute mean properly
-
-        # Average the frames along the frame dimension (axis=0)
-        video = video.mean(dim=0)
-
-        # Resize frames and normalize
-        transform = transforms.Compose([
-            transforms.Resize((256, 256)),
-            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-        ])
-        video = transform(video)  # Apply resizing and normalization
-
-        # Prepare label and ID
-        ID = self.ids[self.video_files[idx]]
-        if self.dataset_choice == "test":
-            return video, ID
-        else:
-            label = torch.tensor(float(1)) if self.data[self.video_files[idx]] == 'fake' else torch.tensor(float(0))
-            return video, label, ID
 
 
 train_dataset = VideoDataset(dataset_dir, dataset_choice="train", nb_frames=nb_frames)
@@ -220,9 +179,9 @@ experimental_dataset = VideoDataset(dataset_dir, dataset_choice="experimental", 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+
 import torch.nn.functional as F
 import numpy as np
-
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
@@ -315,7 +274,6 @@ class EnhancedCNN4(nn.Module):
 
 
 
-
 # LOGGING
 
 wandb.login(key="b15da3ba051c5858226f1d6b28aee6534682d044")
@@ -328,7 +286,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
 
 loss_fn = nn.MSELoss()
-model = EnhancedCNN4().to(device)
+model = EnhancedCNN4_3D().to(device)
 #model = DeepfakeDetector().cuda()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 #epochs = 5
@@ -353,7 +311,7 @@ for epoch in range(epochs):
 
 ## TEST
 
-loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 model = model.to(device)
 ids = []
 labels = []
