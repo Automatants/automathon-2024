@@ -329,7 +329,7 @@ for epoch in range(epochs):
 
 ## TEST
 
-loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 model = model.to(device)
 ids = []
 labels = []
