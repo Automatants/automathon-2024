@@ -301,7 +301,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batch_size = 32
 
 loss_fn = nn.MSELoss()
-model = DeepfakeDetector().to(device)
+model = EnhancedCNN4_3D().to(device)
 print("Training model:")
 summary(model, input_size=(batch_size, 3, 10, 256, 256))
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
