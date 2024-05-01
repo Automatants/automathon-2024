@@ -241,6 +241,9 @@ for epoch in range(epochs):
         predictions = []
         for frame in range(X.shape[2]):  # Process each frame
             frame_input = X[:, frame, :, :, :]  # Select the frame, now shape is [batch_size, channels, height, width]
+            # Make sure that the channels are correctly set to 10 if needed
+            if frame_input.shape[1] != 10:
+                raise ValueError(f"Expected 10 channels, but got {frame_input.shape[1]} channels.")
             frame_pred = model(frame_input)
             predictions.append(frame_pred.unsqueeze(1))  # Unsqueeze to keep batch dimension consistent
         
