@@ -1,0 +1,415 @@
+2024-05-01 10:33:55,062 INFO    StreamThr :1675802 [internal.py:wandb_internal():86] W&B internal server running at pid: 1675802, started at: 2024-05-01 10:33:55.062167
+2024-05-01 10:33:55,064 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status
+2024-05-01 10:33:55,065 INFO    WriterThread:1675802 [datastore.py:open_for_write():87] open: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/run-pbn5cek7.wandb
+2024-05-01 10:33:55,066 DEBUG   SenderThread:1675802 [sender.py:send():379] send: header
+2024-05-01 10:33:55,067 DEBUG   SenderThread:1675802 [sender.py:send():379] send: run
+2024-05-01 10:33:55,440 INFO    SenderThread:1675802 [dir_watcher.py:__init__():211] watching files in: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files
+2024-05-01 10:33:55,440 INFO    SenderThread:1675802 [sender.py:_start_run_threads():1124] run started: pbn5cek7 with start time 1714552435.061712
+2024-05-01 10:33:55,446 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: check_version
+2024-05-01 10:33:55,447 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: check_version
+2024-05-01 10:33:55,546 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: run_start
+2024-05-01 10:33:55,551 DEBUG   HandlerThread:1675802 [system_info.py:__init__():26] System info init
+2024-05-01 10:33:55,552 DEBUG   HandlerThread:1675802 [system_info.py:__init__():41] System info init done
+2024-05-01 10:33:55,552 INFO    HandlerThread:1675802 [system_monitor.py:start():194] Starting system monitor
+2024-05-01 10:33:55,552 INFO    SystemMonitor:1675802 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-05-01 10:33:55,552 INFO    HandlerThread:1675802 [system_monitor.py:probe():214] Collecting system info
+2024-05-01 10:33:55,552 INFO    SystemMonitor:1675802 [interfaces.py:start():190] Started cpu monitoring
+2024-05-01 10:33:55,553 INFO    SystemMonitor:1675802 [interfaces.py:start():190] Started disk monitoring
+2024-05-01 10:33:55,553 INFO    SystemMonitor:1675802 [interfaces.py:start():190] Started gpu monitoring
+2024-05-01 10:33:55,553 INFO    SystemMonitor:1675802 [interfaces.py:start():190] Started memory monitoring
+2024-05-01 10:33:55,554 INFO    SystemMonitor:1675802 [interfaces.py:start():190] Started network monitoring
+2024-05-01 10:33:55,614 DEBUG   HandlerThread:1675802 [system_info.py:probe():150] Probing system
+2024-05-01 10:33:55,620 DEBUG   HandlerThread:1675802 [system_info.py:_probe_git():135] Probing git
+2024-05-01 10:33:55,624 DEBUG   HandlerThread:1675802 [system_info.py:_probe_git():143] Probing git done
+2024-05-01 10:33:55,624 DEBUG   HandlerThread:1675802 [system_info.py:probe():198] Probing system done
+2024-05-01 10:33:55,624 DEBUG   HandlerThread:1675802 [system_monitor.py:probe():223] {'os': 'Linux-5.4.0-153-generic-x86_64-with-glibc2.31', 'python': '3.10.13', 'heartbeatAt': '2024-05-01T08:33:55.614741', 'startedAt': '2024-05-01T08:33:55.058467', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/run.py', 'codePathLocal': 'run.py', 'codePath': 'run.py', 'git': {'remote': 'https://github.com/OussamaZAIBI/automathon-2024.git', 'commit': '7b319b1a0bcc302589eaa1845103303ffa26cb18'}, 'email': 'oussama.zaibi@supcom.tn', 'root': '/raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024', 'host': 'dgxa100', 'username': 'account22', 'executable': '/usr/bin/python', 'cpu_count': 64, 'cpu_count_logical': 128, 'cpu_freq': {'current': 3144.1388671874993, 'min': 1500.0, 'max': 2250.0}, 'cpu_freq_per_core': [{'current': 1921.12, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.671, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.674, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.918, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.759, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.748, 'min': 1500.0, 'max': 2250.0}, {'current': 1579.019, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.153, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.827, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.692, 'min': 1500.0, 'max': 2250.0}, {'current': 3243.5, 'min': 1500.0, 'max': 2250.0}, {'current': 1699.659, 'min': 1500.0, 'max': 2250.0}, {'current': 2068.514, 'min': 1500.0, 'max': 2250.0}, {'current': 2671.214, 'min': 1500.0, 'max': 2250.0}, {'current': 2079.179, 'min': 1500.0, 'max': 2250.0}, {'current': 2040.823, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.99, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.944, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.927, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.635, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.464, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.584, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.602, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.6, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.932, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.694, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.925, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.715, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.233, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.386, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.267, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.013, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.921, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.422, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.674, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.222, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.212, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.175, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.156, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.032, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.149, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.544, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.983, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.609, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.159, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.505, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.151, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.537, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.997, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.911, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.909, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.883, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.628, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.546, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.57, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.542, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.438, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.251, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.733, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.478, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.057, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.996, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.477, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.664, 'min': 1500.0, 'max': 2250.0}, {'current': 3221.089, 'min': 1500.0, 'max': 2250.0}, {'current': 3231.507, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.121, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.648, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.165, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.744, 'min': 1500.0, 'max': 2250.0}, {'current': 1690.644, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.36, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.059, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.006, 'min': 1500.0, 'max': 2250.0}, {'current': 3238.669, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.494, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.088, 'min': 1500.0, 'max': 2250.0}, {'current': 2300.267, 'min': 1500.0, 'max': 2250.0}, {'current': 3220.168, 'min': 1500.0, 'max': 2250.0}, {'current': 1902.965, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.933, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.906, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.89, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.814, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.227, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.077, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.083, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.595, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.622, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.138, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.525, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.467, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.827, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.618, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.333, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.729, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.193, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.758, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.738, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.516, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.502, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.428, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.422, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.271, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.494, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.773, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.163, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.033, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.397, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.935, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.441, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.088, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.934, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.832, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.932, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.855, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.754, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.628, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.486, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.431, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.142, 'min': 1500.0, 'max': 2250.0}, {'current': 3221.996, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.031, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.233, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.064, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.782, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.108, 'min': 1500.0, 'max': 2250.0}, {'current': 3222.183, 'min': 1500.0, 'max': 2250.0}], 'disk': {'/': {'total': 1757.8785285949707, 'used': 378.53174209594727}}, 'memory': {'total': 503.7273750305176}}
+2024-05-01 10:33:55,624 INFO    HandlerThread:1675802 [system_monitor.py:probe():224] Finished collecting system info
+2024-05-01 10:33:55,624 INFO    HandlerThread:1675802 [system_monitor.py:probe():227] Publishing system info
+2024-05-01 10:33:55,625 INFO    HandlerThread:1675802 [system_monitor.py:probe():229] Finished publishing system info
+2024-05-01 10:33:55,627 DEBUG   SenderThread:1675802 [sender.py:send():379] send: files
+2024-05-01 10:33:55,627 INFO    SenderThread:1675802 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2024-05-01 10:33:55,795 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: python_packages
+2024-05-01 10:33:55,795 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: python_packages
+2024-05-01 10:33:55,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:33:55,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:33:55,808 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:33:55,996 DEBUG   SenderThread:1675802 [sender.py:send():379] send: telemetry
+2024-05-01 10:33:56,137 INFO    wandb-upload_0:1675802 [upload_job.py:push():131] Uploaded file /tmp/tmp2e612b4bwandb/369npfk6-wandb-metadata.json
+2024-05-01 10:33:56,442 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_created():271] file/dir created: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/requirements.txt
+2024-05-01 10:33:56,443 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_created():271] file/dir created: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/wandb-metadata.json
+2024-05-01 10:33:56,443 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_created():271] file/dir created: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:33:58,441 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:00,191 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:00,442 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:02,443 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:04,444 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:05,222 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:06,445 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:08,445 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:10,306 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:10,446 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:10,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:34:10,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:34:10,812 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:34:12,446 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:14,447 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:15,409 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:16,448 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:18,449 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:20,450 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:20,462 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:22,451 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:24,451 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:25,690 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:25,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:34:25,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:34:25,842 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:34:26,452 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/config.yaml
+2024-05-01 10:34:26,452 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:28,453 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:30,454 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:31,042 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:32,454 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:34,455 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:36,178 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:36,456 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:38,457 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:40,457 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:40,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:34:40,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:34:40,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:34:41,194 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:42,458 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:44,459 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:46,316 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:46,460 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:48,460 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:50,461 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:51,459 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:52,462 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:54,462 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:55,554 DEBUG   SystemMonitor:1675802 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-05-01 10:34:55,556 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:34:55,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:34:55,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:34:55,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:34:56,463 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:34:56,573 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:34:58,464 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:00,464 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:01,603 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:02,465 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:04,466 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:06,466 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:06,709 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:08,467 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:10,467 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:10,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:35:10,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:35:10,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:35:11,878 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:12,468 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:14,469 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:16,470 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:16,921 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:18,470 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:20,471 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:22,019 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:22,471 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:24,472 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:25,559 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:35:25,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:35:25,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:35:25,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:35:26,473 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:27,179 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:28,473 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:30,474 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:32,225 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:32,475 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:34,475 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:36,476 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:37,235 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:38,477 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:40,477 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:40,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:35:40,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:35:40,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:35:42,312 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:42,478 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:44,479 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:46,480 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:47,431 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:48,480 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:50,481 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:52,451 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:52,481 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:54,482 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:55,559 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:35:55,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:35:55,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:35:55,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:35:56,483 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:35:57,581 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:35:58,483 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:00,484 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:02,484 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:02,691 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:04,485 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:06,486 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:07,861 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:08,486 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:10,486 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:10,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:36:10,807 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:36:10,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:36:12,487 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:12,981 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:14,487 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:16,488 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:18,006 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:18,488 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:20,489 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:22,489 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:23,174 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:24,490 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:25,560 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:36:25,806 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:36:25,806 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:36:25,810 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:36:26,490 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:28,223 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:28,491 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:30,491 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:32,492 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:33,259 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:34,492 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:36,493 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:38,274 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:38,494 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:40,494 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:40,807 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:36:40,807 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:36:40,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:36:42,495 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:43,306 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:44,496 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:46,496 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:48,469 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:48,497 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:50,497 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:52,498 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:53,512 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:36:54,498 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:55,563 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:36:55,807 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:36:55,807 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:36:55,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:36:56,499 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:58,499 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:36:58,567 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:00,500 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:02,501 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:03,619 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:04,501 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:06,502 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:08,502 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:08,724 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:10,503 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:10,807 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:37:10,807 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:37:10,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:37:12,504 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:13,804 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:14,504 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:16,505 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:18,506 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:18,878 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:20,506 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:22,507 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:23,986 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:24,507 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:25,563 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:37:25,807 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:37:25,807 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:37:25,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:37:26,508 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:28,509 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:29,076 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:30,509 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:32,510 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:34,080 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:34,510 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:36,511 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:38,512 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:39,217 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:40,512 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:40,807 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:37:40,808 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:37:40,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:37:42,513 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:44,364 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:44,514 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:46,514 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:48,515 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:49,366 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:50,516 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:52,516 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:54,517 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:54,528 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:37:55,565 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:37:55,807 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: stop_status
+2024-05-01 10:37:55,808 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: stop_status
+2024-05-01 10:37:55,811 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:37:56,518 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:58,518 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:37:59,642 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:38:00,519 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:02,519 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:04,520 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:04,727 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:38:06,521 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:08,521 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:09,902 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:38:10,249 DEBUG   SenderThread:1675802 [sender.py:send():379] send: exit
+2024-05-01 10:38:10,249 INFO    SenderThread:1675802 [sender.py:send_exit():586] handling exit code: 0
+2024-05-01 10:38:10,249 INFO    SenderThread:1675802 [sender.py:send_exit():588] handling runtime: 254
+2024-05-01 10:38:10,249 INFO    SenderThread:1675802 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-05-01 10:38:10,250 INFO    SenderThread:1675802 [sender.py:send_exit():594] send defer
+2024-05-01 10:38:10,250 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,250 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 0
+2024-05-01 10:38:10,250 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,250 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 0
+2024-05-01 10:38:10,250 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 1
+2024-05-01 10:38:10,250 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,250 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 1
+2024-05-01 10:38:10,251 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,251 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 1
+2024-05-01 10:38:10,251 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 2
+2024-05-01 10:38:10,251 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,251 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 2
+2024-05-01 10:38:10,251 INFO    HandlerThread:1675802 [system_monitor.py:finish():203] Stopping system monitor
+2024-05-01 10:38:10,251 DEBUG   SystemMonitor:1675802 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-05-01 10:38:10,252 DEBUG   SystemMonitor:1675802 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-05-01 10:38:10,253 INFO    HandlerThread:1675802 [interfaces.py:finish():202] Joined cpu monitor
+2024-05-01 10:38:10,253 INFO    HandlerThread:1675802 [interfaces.py:finish():202] Joined disk monitor
+2024-05-01 10:38:10,253 INFO    HandlerThread:1675802 [interfaces.py:finish():202] Joined gpu monitor
+2024-05-01 10:38:10,254 INFO    HandlerThread:1675802 [interfaces.py:finish():202] Joined memory monitor
+2024-05-01 10:38:10,254 INFO    HandlerThread:1675802 [interfaces.py:finish():202] Joined network monitor
+2024-05-01 10:38:10,254 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,254 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 2
+2024-05-01 10:38:10,254 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 3
+2024-05-01 10:38:10,254 DEBUG   SenderThread:1675802 [sender.py:send():379] send: stats
+2024-05-01 10:38:10,254 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,255 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 3
+2024-05-01 10:38:10,255 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,255 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 3
+2024-05-01 10:38:10,255 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 4
+2024-05-01 10:38:10,255 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,255 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 4
+2024-05-01 10:38:10,255 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,255 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 4
+2024-05-01 10:38:10,255 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 5
+2024-05-01 10:38:10,255 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,255 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 5
+2024-05-01 10:38:10,256 DEBUG   SenderThread:1675802 [sender.py:send():379] send: summary
+2024-05-01 10:38:10,256 INFO    SenderThread:1675802 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2024-05-01 10:38:10,256 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,256 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 5
+2024-05-01 10:38:10,256 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 6
+2024-05-01 10:38:10,256 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,256 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 6
+2024-05-01 10:38:10,256 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,256 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 6
+2024-05-01 10:38:10,256 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 7
+2024-05-01 10:38:10,256 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: status_report
+2024-05-01 10:38:10,256 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:10,257 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 7
+2024-05-01 10:38:10,257 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:10,257 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 7
+2024-05-01 10:38:10,522 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:10,522 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_created():271] file/dir created: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/wandb-summary.json
+2024-05-01 10:38:11,249 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-01 10:38:12,249 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 8
+2024-05-01 10:38:12,249 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: poll_exit
+2024-05-01 10:38:12,249 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:12,250 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 8
+2024-05-01 10:38:12,250 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:12,250 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-05-01 10:38:12,250 INFO    SenderThread:1675802 [job_builder.py:build():318] Attempting to build job artifact
+2024-05-01 10:38:12,251 INFO    SenderThread:1675802 [job_builder.py:_get_source_type():455] is repo sourced job
+2024-05-01 10:38:12,264 INFO    SenderThread:1675802 [job_builder.py:build():431] adding wandb-job metadata file
+2024-05-01 10:38:12,265 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 9
+2024-05-01 10:38:12,265 DEBUG   SenderThread:1675802 [sender.py:send():379] send: artifact
+2024-05-01 10:38:12,265 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:12,266 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 9
+2024-05-01 10:38:12,523 INFO    Thread-12 :1675802 [dir_watcher.py:_on_file_modified():288] file/dir modified: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:13,101 INFO    wandb-upload_0:1675802 [upload_job.py:push():86] Skipped uploading /raid/home/automathon_2024/account22/.local/share/wandb/artifacts/staging/tmprmd7wgy1
+2024-05-01 10:38:13,251 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-01 10:38:13,326 INFO    wandb-upload_1:1675802 [upload_job.py:push():89] Uploaded file /tmp/tmpp0dxp836/wandb-job.json
+2024-05-01 10:38:14,359 INFO    SenderThread:1675802 [sender.py:send_artifact():1468] sent artifact job-https___github.com_OussamaZAIBI_automathon-2024.git_run.py - {'id': 'QXJ0aWZhY3Q6ODE2OTEzMzIx', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjE2OTAzMDA1MQ==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6ODE2ODgxNDY1', 'versionIndex': 2}}}
+2024-05-01 10:38:14,360 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:14,360 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-05-01 10:38:14,360 INFO    SenderThread:1675802 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-05-01 10:38:14,523 INFO    SenderThread:1675802 [dir_watcher.py:finish():388] scan: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files
+2024-05-01 10:38:14,524 INFO    SenderThread:1675802 [dir_watcher.py:finish():402] scan save: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/wandb-metadata.json wandb-metadata.json
+2024-05-01 10:38:14,524 INFO    SenderThread:1675802 [dir_watcher.py:finish():402] scan save: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/wandb-summary.json wandb-summary.json
+2024-05-01 10:38:14,524 INFO    SenderThread:1675802 [dir_watcher.py:finish():402] scan save: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log output.log
+2024-05-01 10:38:14,524 INFO    SenderThread:1675802 [dir_watcher.py:finish():402] scan save: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/requirements.txt requirements.txt
+2024-05-01 10:38:14,524 INFO    SenderThread:1675802 [dir_watcher.py:finish():402] scan save: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/config.yaml config.yaml
+2024-05-01 10:38:14,524 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 10
+2024-05-01 10:38:14,525 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: poll_exit
+2024-05-01 10:38:14,525 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:14,525 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 10
+2024-05-01 10:38:14,531 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:14,531 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-05-01 10:38:14,531 INFO    SenderThread:1675802 [file_pusher.py:finish():172] shutting down file pusher
+2024-05-01 10:38:14,851 INFO    wandb-upload_0:1675802 [upload_job.py:push():131] Uploaded file /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/wandb-summary.json
+2024-05-01 10:38:14,881 INFO    wandb-upload_1:1675802 [upload_job.py:push():131] Uploaded file /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/output.log
+2024-05-01 10:38:14,905 INFO    wandb-upload_2:1675802 [upload_job.py:push():131] Uploaded file /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/requirements.txt
+2024-05-01 10:38:14,913 INFO    wandb-upload_3:1675802 [upload_job.py:push():131] Uploaded file /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/files/config.yaml
+2024-05-01 10:38:15,114 INFO    Thread-11 (_thread_body):1675802 [sender.py:transition_state():614] send defer: 11
+2024-05-01 10:38:15,114 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:15,115 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 11
+2024-05-01 10:38:15,115 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:15,115 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-05-01 10:38:15,115 INFO    SenderThread:1675802 [file_pusher.py:join():178] waiting for file pusher
+2024-05-01 10:38:15,115 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 12
+2024-05-01 10:38:15,116 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:15,116 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 12
+2024-05-01 10:38:15,116 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:15,116 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-05-01 10:38:15,116 INFO    SenderThread:1675802 [file_stream.py:finish():614] file stream finish called
+2024-05-01 10:38:15,252 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-01 10:38:15,448 INFO    SenderThread:1675802 [file_stream.py:finish():618] file stream finish is done
+2024-05-01 10:38:15,448 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 13
+2024-05-01 10:38:15,448 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: poll_exit
+2024-05-01 10:38:15,448 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:15,448 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 13
+2024-05-01 10:38:15,449 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:15,449 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-05-01 10:38:15,449 INFO    SenderThread:1675802 [sender.py:transition_state():614] send defer: 14
+2024-05-01 10:38:15,449 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: defer
+2024-05-01 10:38:15,449 DEBUG   SenderThread:1675802 [sender.py:send():379] send: final
+2024-05-01 10:38:15,449 INFO    HandlerThread:1675802 [handler.py:handle_request_defer():172] handle defer: 14
+2024-05-01 10:38:15,450 DEBUG   SenderThread:1675802 [sender.py:send():379] send: footer
+2024-05-01 10:38:15,450 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: defer
+2024-05-01 10:38:15,450 INFO    SenderThread:1675802 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-05-01 10:38:15,450 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-01 10:38:15,451 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: poll_exit
+2024-05-01 10:38:15,451 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: poll_exit
+2024-05-01 10:38:15,451 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: poll_exit
+2024-05-01 10:38:15,451 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: server_info
+2024-05-01 10:38:15,452 DEBUG   SenderThread:1675802 [sender.py:send_request():406] send_request: server_info
+2024-05-01 10:38:15,454 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: get_summary
+2024-05-01 10:38:15,454 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: sampled_history
+2024-05-01 10:38:15,455 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: internal_messages
+2024-05-01 10:38:15,571 INFO    MainThread:1675802 [wandb_run.py:_footer_history_summary_info():3936] rendering history
+2024-05-01 10:38:15,571 INFO    MainThread:1675802 [wandb_run.py:_footer_history_summary_info():3968] rendering summary
+2024-05-01 10:38:15,571 INFO    MainThread:1675802 [wandb_run.py:_footer_sync_info():3895] logging synced files
+2024-05-01 10:38:15,572 DEBUG   HandlerThread:1675802 [handler.py:handle_request():146] handle_request: shutdown
+2024-05-01 10:38:15,572 INFO    HandlerThread:1675802 [handler.py:finish():866] shutting down handler
+2024-05-01 10:38:16,452 INFO    WriterThread:1675802 [datastore.py:close():296] close: /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_103355-pbn5cek7/run-pbn5cek7.wandb
+2024-05-01 10:38:16,571 INFO    SenderThread:1675802 [sender.py:finish():1546] shutting down sender
+2024-05-01 10:38:16,571 INFO    SenderThread:1675802 [file_pusher.py:finish():172] shutting down file pusher
+2024-05-01 10:38:16,571 INFO    SenderThread:1675802 [file_pusher.py:join():178] waiting for file pusher

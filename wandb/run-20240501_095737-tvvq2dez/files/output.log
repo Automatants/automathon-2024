@@ -1,0 +1,36 @@
+Training model:
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+DeepfakeDetector                         [2, 1]                    --
+├─Flatten: 1-1                           [2, 1966080]              --
+├─Linear: 1-2                            [2, 1]                    1,966,081
+├─Sigmoid: 1-3                           [2, 1]                    --
+==========================================================================================
+Total params: 1,966,081
+Trainable params: 1,966,081
+Non-trainable params: 0
+Total mult-adds (M): 3.93
+==========================================================================================
+Input size (MB): 15.73
+Forward/backward pass size (MB): 0.00
+Params size (MB): 7.86
+Estimated Total Size (MB): 23.59
+==========================================================================================
+Training...
+Testing...
+/raid/home/automathon_2024/account22/.local/lib/python3.10/site-packages/torch/cuda/__init__.py:118: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at ../c10/cuda/CUDAFunctions.cpp:108.)
+  return torch._C._cuda_getDeviceCount() > 0
+
+
+
+
+
+
+
+
+
+
+ 94%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▋       | 1413/1499 [00:21<00:01, 60.10it/s]
+
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1499/1499 [00:23<00:00, 65.12it/s]

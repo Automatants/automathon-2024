@@ -1,0 +1,29 @@
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Current SDK version is 0.16.6
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Configure stats pid to 1621585
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Loading settings from /raid/home/automathon_2024/account22/.config/wandb/settings
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Loading settings from /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/settings
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'run.py', 'program_abspath': '/raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/run.py', 'program': '/raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/run.py'}
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Applying login settings: {'api_key': '***REDACTED***'}
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_init.py:_log_setup():521] Logging user logs to /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_095737-tvvq2dez/logs/debug.log
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_init.py:_log_setup():522] Logging internal logs to /raid/home/automathon_2024/account22/Desktop/Getting Started/automathon-2024/wandb/run-20240501_095737-tvvq2dez/logs/debug-internal.log
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_init.py:init():561] calling init triggers
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_init.py:init():568] wandb.init called with sweep_config: {}
+config: {'learning_rate': 0.001, 'architecture': '-', 'dataset': 'DeepFake Detection Challenge', 'epochs': 10, 'batch_size': 10}
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_init.py:init():611] starting backend
+2024-05-01 09:57:37,734 INFO    MainThread:1621585 [wandb_init.py:init():615] setting up manager
+2024-05-01 09:57:37,735 INFO    MainThread:1621585 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-05-01 09:57:37,736 INFO    MainThread:1621585 [wandb_init.py:init():623] backend started and connected
+2024-05-01 09:57:37,737 INFO    MainThread:1621585 [wandb_init.py:init():715] updated telemetry
+2024-05-01 09:57:37,740 INFO    MainThread:1621585 [wandb_init.py:init():748] communicating run to backend with 90.0 second timeout
+2024-05-01 09:57:38,190 INFO    MainThread:1621585 [wandb_run.py:_on_init():2357] communicating current version
+2024-05-01 09:57:38,302 INFO    MainThread:1621585 [wandb_run.py:_on_init():2366] got version response 
+2024-05-01 09:57:38,302 INFO    MainThread:1621585 [wandb_init.py:init():799] starting run threads in backend
+2024-05-01 09:57:38,575 INFO    MainThread:1621585 [wandb_run.py:_console_start():2335] atexit reg
+2024-05-01 09:57:38,575 INFO    MainThread:1621585 [wandb_run.py:_redirect():2190] redirect: wrap_raw
+2024-05-01 09:57:38,575 INFO    MainThread:1621585 [wandb_run.py:_redirect():2255] Wrapping output streams.
+2024-05-01 09:57:38,575 INFO    MainThread:1621585 [wandb_run.py:_redirect():2280] Redirects installed.
+2024-05-01 09:57:38,576 INFO    MainThread:1621585 [wandb_init.py:init():842] run started, returning control to user process
+2024-05-01 09:58:08,067 WARNING MsgRouterThr:1621585 [router.py:message_loop():77] message_loop has been closed
