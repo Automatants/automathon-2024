@@ -218,19 +218,16 @@ run = wandb.init(
 
 
 # ENTRAINEMENT
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 batch_size = 32
 loss_fn = nn.MSELoss()
 model = UNet(1).to(device)
 print("Training model:")
-# Assuming model is initialized and input_size should be (batch_size, channels, height, width)
-summary(model, input_size=(batch_size, 10, 256, 256))  # Changed from 3 to 10 channels
+summary(model, input_size=(32, 10, 256, 256))  # Ensure the summary uses the correct dimensions
 
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 epochs = 10
 loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-#loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
 print("Training...")
 for epoch in range(epochs):
@@ -239,12 +236,24 @@ for epoch in range(epochs):
         X, label, ID = sample
         X = X.to(device)
         label = label.to(device)
-        label_pred = model(X)
-        label = torch.unsqueeze(label,dim=1)
+
+        # Handle each frame independently and average the predictions
+        predictions = []
+        for frame in range(X.shape[2]):  # Process each frame
+            frame_input = X[:, frame, :, :, :]  # Select the frame, now shape is [batch_size, channels, height, width]
+            frame_pred = model(frame_input)
+            predictions.append(frame_pred.unsqueeze(1))  # Unsqueeze to keep batch dimension consistent
+        
+        # Average predictions across frames
+        label_pred = torch.mean(torch.cat(predictions, dim=1), dim=1)  # Concatenate and then average along the frame dimension
+
+        # Calculate loss, backpropagate and update weights
+        label = torch.unsqueeze(label, dim=1)  # Ensure label dimensions match prediction dimensions
         loss = loss_fn(label, label_pred)
         loss.backward()
         optimizer.step()
         run.log({"loss": loss.item(), "epoch": epoch})
+
 
 ## TEST
 
