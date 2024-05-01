@@ -164,26 +164,13 @@ display_image(img)
 
 
 # MODELE
-
-class UNetBlock(nn.Module):
-    def __init__(self, in_channels, out_channels):
-        super(UNetBlock, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1)
-        self.conv2 = nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1)
-        self.bn = nn.BatchNorm2d(out_channels)
-
-    def forward(self, x):
-        x = F.relu(self.bn(self.conv1(x)))
-        x = F.relu(self.bn(self.conv2(x)))
-        return x
-
 class UNet(nn.Module):
     def __init__(self, num_classes):
         super(UNet, self).__init__()
-        # Encoder (utilise ResNet50 pré-entraîné)
+        # Encoder (utilize pretrained ResNet50)
         resnet = timm.create_model('resnet50', pretrained=True)
         self.encoder = nn.Sequential(*list(resnet.children())[:-2])
-         # Adjusting the first convolutional layer to take 10 input channels
+        # Adjusting the first convolutional layer to accept 10 input channels
         self.encoder[0] = nn.Conv2d(10, 64, kernel_size=7, stride=2, padding=3, bias=False)
 
         # Decoder
@@ -196,22 +183,19 @@ class UNet(nn.Module):
             nn.ConvTranspose2d(256, 128, kernel_size=2, stride=2),
             UNetBlock(128, 128)
         )
-        
-        # Classification binaire
+
+        # Final classification layer
         self.global_pool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Linear(128, num_classes)
 
     def forward(self, x):
-        # Encoder
-        x = self.encoder(x[:, :, 0])
-        # Decoder
+        # Make sure to pass the whole tensor to the encoder
+        x = self.encoder(x)  # Removed incorrect indexing
         x = self.decoder(x)
-        # Classification binaire
         x = self.global_pool(x)
         x = torch.flatten(x, 1)
         x = self.fc(x)
         return torch.sigmoid(x)
-
 
 # LOGGING
 
