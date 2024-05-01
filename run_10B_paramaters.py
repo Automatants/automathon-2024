@@ -257,6 +257,8 @@ class EnhancedCNN4_3D(nn.Module):
         in_channels = out_channels
         out_channels *= 2
 
+        self.conv4 = nn.Conv3d(in_channels, out_channels, kernel_size=k_size, stride=stride_, padding=padding_)
+        self.bn4 = nn.BatchNorm3d(out_channels)
         self.pool2 = nn.MaxPool3d(kernel_size=pool_k_size, stride=pool_stride)
 
         # Assuming input depth is 10 frames and each frame is 256x256 pixels
@@ -269,17 +271,28 @@ class EnhancedCNN4_3D(nn.Module):
             dim = (dim - pool_k_size[2] + 2 * pool_padding[2]) // pool_stride[2] + 1
 
         self.dropout = nn.Dropout(dropout_rate)
-        self.fc = nn.Linear(20971520, 1024)  # Adjusting for 3D volume
+        self.fc = nn.Linear(10485760, 1024)  # Adjusting for 3D volume
         self.fc2 = nn.Linear(1024, 2)  # Number of classes
 
     def forward(self, x):
+        # x = F.relu(self.bn1(self.conv1(x)))
+        # x = self.pool1(F.relu(self.bn2(self.conv2(x))))
+        # x = F.relu(self.bn3(self.conv3(x)))
+        # x = self.pool2(F.relu(self.bn4(self.conv4(x))))
         
+        # x = torch.flatten(x, 1)
+        # x = self.dropout(x)
+        # x = F.relu(self.fc(x))
+        # x = self.fc2(x)
+        # return x
 
         x = F.relu(self.bn1(self.conv1(x)))
         
         x = self.pool1(F.relu(self.bn2(self.conv2(x))))
         
-        x = self.pool2(F.relu(self.bn3(self.conv3(x))))
+        x = F.relu(self.bn3(self.conv3(x)))
+        
+        x = self.pool2(F.relu(self.bn4(self.conv4(x))))
         
         
         x = torch.flatten(x, 1)
