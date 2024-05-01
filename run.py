@@ -308,7 +308,7 @@ model = EnhancedCNN4_3D().to(device)
 #model = DeepfakeDetector().cuda()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 #epochs = 5
-epochs = 5
+epochs = 1
 loader = DataLoader(experimental_dataset, batch_size=2, shuffle=True)
 
 for epoch in range(epochs):
