@@ -228,7 +228,9 @@ batch_size = 32
 loss_fn = nn.MSELoss()
 model = UNet(1).to(device)
 print("Training model:")
-summary(model, input_size=(batch_size, 3, 10, 256, 256))
+# Assuming model is initialized and input_size should be (batch_size, channels, height, width)
+summary(model, input_size=(batch_size, 10, 256, 256))  # Changed from 3 to 10 channels
+
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 epochs = 10
 loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
